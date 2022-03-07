@@ -208,7 +208,7 @@ submitbtn.addEventListener("click", function(event) {
 });
 
 
-// create a list from the string in local storage for the high scores page
+// create a array and list from the string in local storage for the high scores page
 function list() {
     var createScoresList = localStorage.getItem("user");
     var scoresArray = createScoresList.split(" ");
