@@ -204,7 +204,7 @@ submitbtn.addEventListener("click", function(event) {
     // set new submission to local storage
     localStorage.setItem("user", JSON.stringify(userlist));
 
-    goHighScores();
+    skipHigh();
 });
 
 
@@ -229,7 +229,10 @@ function list() {
 };
 
 
- 
+var skipHigh = function() {
+    list();
+    goHighScores();
+}
 
 
 // show high scores page
@@ -242,7 +245,7 @@ var goHighScores = function() {
     timeShow.classList.add('hide');
     viewHighScoresLink.classList.add('hide');
     clearInterval(timer);
-    list();
+    
     
 };
 
@@ -268,6 +271,7 @@ function restartGame() {
 function clearLocal() {
     localStorage.clear();
     answerReply.classList.remove('hide');
+    location.reload();
     restartGame();
 
     
