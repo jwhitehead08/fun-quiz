@@ -16,7 +16,7 @@ const questionEl = document.getElementById('question');
 const timeShow = document.getElementById('timer')
 const answerReply = document.getElementById('answer-reply');
 const finalScorePage = document.getElementById('final-score-page');
-const initialsInput = document.getElementById('input-area');
+var initialsInput = document.getElementById('input-area');
 const finalScoreNumber = document.getElementById('final-score');
 const highScoresPage = document.getElementById('high-scores-page');
 const viewHighScoresLink  = document.getElementById('view-high-scores-link');
@@ -212,7 +212,10 @@ submitbtn.addEventListener("click", function(event) {
 function list() {
     var createScoresList = localStorage.getItem("user");
     var scoresArray = createScoresList.split(" ");
-    console.log(scoresArray[0]);
+    var testG = JSON.parse(scoresArray);
+    console.log(testG);
+    console.log(testG[0].Initials);
+   
 
     listEl = document.createElement('ul');
     listItemsNum = scoresArray.length;
@@ -222,8 +225,12 @@ function list() {
 
     for (i = 0; i < listItemsNum; i++) {
         listItem = document.createElement('li');
-        listItem.innerHTML = scoresArray[i];
+        listItem.innerText = testG[0].Initials + '-' + testG[0].Score;
+
         listEl.appendChild(listItem);
+        
+        console.log(scoresArray[i]);
+        console.log(scoresArray[i].idInput);
     }
 
 };
@@ -232,6 +239,7 @@ function list() {
 var skipHigh = function() {
     list();
     goHighScores();
+    initialsInput.innerHTML = "";
 }
 
 
